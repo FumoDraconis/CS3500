@@ -2,27 +2,22 @@
 #include <stdlib.h>
 
 int main( ) {
-	char str[100];
-	FILE *ofp;
-
-	ofp = fopen("out.txt", "");
-	
-	if(ofp == NULL)
-	{
-		printf("Error!");
-		exit(1);
-	}	
+	char sum[100];
+	FILE *OutPutFile;
 	
 	printf( "enter EQ:\n");
-	fgets(str,100,stdin);
+	fgets(sum,100,stdin);
+		
+	printf ("entered: %s", sum);
+	getchar();
+
+	OutPutFile = fopen("out.txt", "w");
+	fputs(sum ,OutPutFile);
 	
-	fprintf(ofp,"%s",str);	
-	fclose(ofp);
+
+	fclose(OutPutFile);
 
 
-	//printf ("entered: %s", str);
-
-	//getchar();
 
 	return 0;
 }
