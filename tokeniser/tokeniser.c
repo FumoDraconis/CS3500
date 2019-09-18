@@ -2,22 +2,14 @@
 #include <stdlib.h>
 
 int main( ) {
-	char sum[100];
-	FILE *OutPutFile;
+	char inputEquation[100];
 	
-	printf( "enter EQ:\n");
-	fgets(sum,100,stdin);
-		
-	printf ("entered: %s", sum);
-	getchar();
+	printf("enter EQ:\n");
+	fgets(inputEquation, 100, stdin);	
 
-	OutPutFile = fopen("out.txt", "w");
-	fputs(sum ,OutPutFile);
-	
-
-	fclose(OutPutFile);
-
-
+	FILE *outputFile = fopen("out.txt", "w");
+	fputs(inputEquation, outputFile);
+	fclose(outputFile);
 
 	return 0;
 }
