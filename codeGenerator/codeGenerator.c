@@ -7,23 +7,18 @@ void checker(char buffer[100], FILE *writing_file_pointer) {
 	int sub_comparison = strcmp(buffer, "-");
 	int mul_comparison = strcmp(buffer, "*");
 	int div_comparison = strcmp(buffer, "/");
-	int eq_comparison = strcmp(buffer, "=");
 	if (add_comparison == 0) {
 		current_operator = "ADD\n";
 		fputs(current_operator, writing_file_pointer);
-		printf("%s", current_operator);
 	} else if (sub_comparison == 0) {
 		current_operator = "SUB\n";
 		fputs(current_operator, writing_file_pointer);
-		printf("%s", current_operator);
 	} else if (mul_comparison == 0) {
 		current_operator = "MUL\n";
 		fputs(current_operator, writing_file_pointer);
-		printf("%s", current_operator);
 	} else if (div_comparison == 0) {
 		current_operator = "DIV\n";
 		fputs(current_operator, writing_file_pointer);
-		printf("%s", current_operator);
 	} else {
 		int float_flag = 0;
 		char *sp;
@@ -36,12 +31,10 @@ void checker(char buffer[100], FILE *writing_file_pointer) {
 			fputs("LOADFLOAT ", writing_file_pointer);
 			fputs(buffer, writing_file_pointer);
 			fputs("\n", writing_file_pointer);
-			printf("LOADFLOAT %s\n", buffer);
 		} else {
 			fputs("LOADINT ", writing_file_pointer);
 			fputs(buffer, writing_file_pointer);
 			fputs("\n", writing_file_pointer);
-			printf("LOADINT %s\n", buffer);
 		}
 	}
 }
