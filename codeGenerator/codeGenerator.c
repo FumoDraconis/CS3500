@@ -47,12 +47,8 @@ void main() {
 	clearing_file_pointer = fopen("../virtualMachine/codeGeneratorOutput.txt", "w");
 	writing_file_pointer = fopen("../virtualMachine/codeGeneratorOutput.txt", "a");
 	fclose(clearing_file_pointer);
-	fscanf(reading_file_pointer, "%s", buffer);
-	int string_compare = strcmp(buffer, "\0");
-	while (string_compare != 0) {
+	while (fscanf(reading_file_pointer, "%s", buffer) != EOF) {
 		checker(buffer, writing_file_pointer);
-		fscanf(reading_file_pointer, "%s", buffer);
-		string_compare = strcmp(buffer, "=");
 	}
 	fclose(reading_file_pointer);
 	fclose(writing_file_pointer);
