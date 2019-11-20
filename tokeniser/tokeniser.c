@@ -89,7 +89,6 @@ void separator(char input[100]){
 	FILE *outputFile = fopen("translator/tokeniserOutput.txt", "w");
 	for (int counter = 0; counter < strlen(input); counter += 1 ){
 		char *namePtr = input;
-		char data;
 		if (isdigit(input[counter])!=0 || input[counter] =='.'){
 			fputc(input[counter],outputFile);
 
