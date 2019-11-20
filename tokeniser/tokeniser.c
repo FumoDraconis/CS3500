@@ -47,7 +47,7 @@ int checkInput(char inputEquation[100]){
 			printf("invalid input:\n");
 			printf("3");	
 			return 0;
-		}else if(inputEquation[counter] == '(' && isdigit(inputEquation[counter+1])==0 ){
+		}else if(inputEquation[counter] == '(' && isdigit(inputEquation[counter+1])==0 && inputEquation[counter+1] != '('){
 			printf("invalid input:\n");
 			printf("4");	
 			return 0;
@@ -57,16 +57,16 @@ int checkInput(char inputEquation[100]){
 			return 0;
 }
 }
-	if(opt_check == 0){
-			printf("invalid input:\n");
-			printf("6");	
-			return 0;
-}
-	if(breakes_check <= 1 && inputEquation[0] == '(' && real_check !=1){
-			printf("invalid input:\n");
-			printf("7");	
-			return 0;			
-}
+	//if(opt_check == 0){
+	//		printf("invalid input:\n");
+	//		printf("6");	
+	//		return 0;
+//}
+	//if(breakes_check <= 1 && inputEquation[0] == '(' && real_check !=1){
+	//		printf("invalid input:\n");
+	//		printf("7");	
+	//		return 0;			
+//}
 	if(num_brack % 2 !=0 ){
 			printf("invalid input:\n");
 			printf("8");	
