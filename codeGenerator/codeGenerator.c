@@ -43,9 +43,9 @@ void main() {
 	FILE *clearing_file_pointer;
 	FILE *writing_file_pointer;
 	char buffer[100];
-	reading_file_pointer = fopen("translatorOutput.txt", "r");
-	clearing_file_pointer = fopen("../virtualMachine/codeGeneratorOutput.txt", "w");
-	writing_file_pointer = fopen("../virtualMachine/codeGeneratorOutput.txt", "a");
+	reading_file_pointer = fopen("codeGenerator/translatorOutput.txt", "r");
+	clearing_file_pointer = fopen("virtualMachine/codeGeneratorOutput.txt", "w");
+	writing_file_pointer = fopen("virtualMachine/codeGeneratorOutput.txt", "a");
 	fclose(clearing_file_pointer);
 	while (fscanf(reading_file_pointer, "%s", buffer) != EOF) {
 		checker(buffer, writing_file_pointer);

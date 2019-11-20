@@ -21,7 +21,7 @@ void separator(char input[100]){
 
 	for (int counter = 0; counter < strlen(input); counter += 1 ){
 		char *namePtr = input;
-		if (isdigit(input[counter])==0 || input[counter] == "."){
+		if (isdigit(input[counter])==0 || input[counter] == '.'){
 			printf( "\n%c\n",*(namePtr +counter));	
 			}else{	
 				printf("%c", *(namePtr + counter));		

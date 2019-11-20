@@ -163,7 +163,7 @@ int main(){
 	char var[100];
 	int test = 0;
 	FILE *file;
-	file = fopen("sample","r");
+	file = fopen("translator/tokeniserOutput.txt","r");
 	while(fgets(var, sizeof(var), file)!=NULL){
 
 		//infix[counter] = var;
