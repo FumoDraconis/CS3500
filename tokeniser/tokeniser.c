@@ -57,16 +57,6 @@ int checkInput(char inputEquation[100]){
 			return 0;
 }
 }
-	//if(opt_check == 0){
-	//		printf("invalid input:\n");
-	//		printf("6");	
-	//		return 0;
-//}
-	//if(breakes_check <= 1 && inputEquation[0] == '(' && real_check !=1){
-	//		printf("invalid input:\n");
-	//		printf("7");	
-	//		return 0;			
-//}
 	if(num_brack % 2 !=0 ){
 			printf("invalid input:\n");
 			printf("8");	
@@ -75,7 +65,7 @@ int checkInput(char inputEquation[100]){
 	return 1;	
 }
 void separator(char input[100]){
-	FILE *outputFile = fopen("out.txt", "w");
+	FILE *outputFile = fopen("translator/tokeniser_output.txt", "w");
 	for (int counter = 0; counter < strlen(input); counter += 1 ){
 		char *namePtr = input;
 		char data;
