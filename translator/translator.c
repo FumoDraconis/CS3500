@@ -12,8 +12,6 @@ char stack[500];
 int counter = 0;
 char newLine = ' ';
 
-
-
 void push(char item){
 	if(top >= 100 - 1){
 		printf("\n Stack Overflow.");
@@ -121,8 +119,7 @@ void InfixToPostfix(char infix_exp[], char postfix_exp[])
 				j++;
 				x = pop();
 			}
-			//postfix_exp[j] = newLine;                  /* so pop all higher precendence operator and */
-			//j++;
+
 		}
 		else
 		{ /* if current symbol is neither operand not '(' nor ')' and nor
@@ -133,11 +130,8 @@ void InfixToPostfix(char infix_exp[], char postfix_exp[])
 		}
 		i++;
 
-
 		item = infix_exp[i]; /* go to next symbol of infix expression */
-		//postfix_exp[j] = newLine;
-		//j++;
-		//push(newLine);
+
 	} /* while loop ends here */
 	if(top>0)
 	{
@@ -152,7 +146,6 @@ void InfixToPostfix(char infix_exp[], char postfix_exp[])
 		exit(1);
 	}
 
-
 	postfix_exp[j] = '\0'; /* add sentinel else puts() fucntion */
 	/* will print entire postfix[] array upto SIZE */
 
@@ -166,22 +159,32 @@ int main(){
 	file = fopen("translator/tokeniserOutput.txt","r");
 	while(fgets(var, sizeof(var), file)!=NULL){
 
-		//infix[counter] = var;
 		len = strlen(var);
 		strncat(myString, var, len-1);
 
-		//strncat(myString, space, 1);
 		counter = counter + 1;
 	}
 
 	fclose(file);
 	char infix[counter*2], postfix[counter*2];
-	//strcpy(infix, myString);
+
 	#define SIZE counter
 	strcpy(infix, myString);
-	//puts(infix);
+
 	InfixToPostfix(infix, postfix);
-	printf("%s\n", postfix);
+	myString[0] = '\0';
+	len = strlen(postfix);
+	strncat(myString, postfix, len);
+	FILE *filepointer;
+	filepointer = fopen("codeGenerator/translatorOutput.txt", "w");
+	for(int i = 0; i < len; i++){
+		if(myString[i] == ' '){
+			fprintf(filepointer, "\n");
+		} else {
+			fprintf(filepointer,"%c", myString[i]);
+		}
+	}
+	fclose(filepointer);
 
 	return 0;
 }

@@ -34,10 +34,10 @@ run_virtualMachine:
 	@./virtualMachine/virtualMachine_output
 
 clean:
-	rm tokeniser/tokeniser_output
-	rm translator/tokeniser_output.txt
-	rm translator/translator_output
-	rm codeGenerator/translator_output.txt
-	rm codeGenerator/codeGenerator_output
-	rm virtualMachine/codeGenerator_output.txt
-	rm virtualMachine/virtualMachine_output
+	@rm tokeniser/tokeniser_output
+	@rm translator/tokeniserOutput.txt
+	@rm translator/translator_output
+	@rm codeGenerator/translatorOutput.txt
+	@rm codeGenerator/codeGenerator_output
+	@rm virtualMachine/codeGeneratorOutput.txt
+	@rm virtualMachine/virtualMachine_output
