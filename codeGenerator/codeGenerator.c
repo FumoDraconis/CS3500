@@ -38,7 +38,7 @@ void checker(char buffer[100], FILE *writing_file_pointer) {
 		}
 	}
 }
-void main() {
+int main() {
 	FILE *reading_file_pointer;
 	FILE *clearing_file_pointer;
 	FILE *writing_file_pointer;
@@ -52,4 +52,5 @@ void main() {
 	}
 	fclose(reading_file_pointer);
 	fclose(writing_file_pointer);
+	return 0;
 }

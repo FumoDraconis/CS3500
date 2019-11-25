@@ -118,10 +118,10 @@ void separator(char input[100]){
                 }else if(input[counter] =='(' && isdigit(input[counter-1])==0){
 
 
+
 			fprintf(outputFile,"%c\n",*(namePtr +counter));
 
-
-
+			fprintf(outputFile,"%c\n",*(namePtr +counter));
 		}else { 
 
 			fprintf(outputFile,"\n%c\n",*(namePtr +counter));
