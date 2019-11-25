@@ -134,11 +134,11 @@ int main( ) {
 	char inputEquation[100];
 	printf("enter EQ:");
 	fgets(inputEquation, 100, stdin);
+	remove_spaces(inputEquation);
 	int checked = checkInput(inputEquation);
 	if (checked == 0){
 		return 0;	
 	}
-	remove_spaces(inputEquation);
 	printf("%s",inputEquation);
 	separator(inputEquation);
 	return 0;
