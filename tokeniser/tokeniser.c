@@ -9,7 +9,7 @@ void remove_spaces(char* s) {
         while (*d == ' ') {
             ++d;
         }
-    } while (*s++ = *d++);
+    } while ((*s++ = *d++));
 }
 
 int checkInput(char inputEquation[100]){
@@ -26,7 +26,7 @@ int checkInput(char inputEquation[100]){
 	int num_brack =0;
 	int neg_check =0;  
 	for (int counter = 0; counter < strlen(inputEquation); counter += 1 ){
-		if (inputEquation[counter-1]>='0' && inputEquation[counter-1]<='9' || strchr(all_opt,inputEquation[counter-1])!= NULL ){
+		if ((inputEquation[counter-1]>='0' && inputEquation[counter-1]<='9') || strchr(all_opt,inputEquation[counter-1])!= NULL ){
 			ch = 0 ;
 		}else{
 			ch =1;			
@@ -49,7 +49,7 @@ int checkInput(char inputEquation[100]){
 			printf("invalid input:\n");
 			printf("1");	
 			return 0;
-		}else if (isalpha(inputEquation[counter]) && inputEquation[counter] != *opt || ch ==1  ){
+		}else if ((isalpha(inputEquation[counter]) && inputEquation[counter] != *opt) || ch ==1  ){
 			printf("invalid input:\n");
 			printf("2");
 			return 0;
@@ -143,8 +143,4 @@ int main( ) {
 	separator(inputEquation);
 	return 0;
 }
-
-
-
-
 
