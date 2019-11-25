@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h> 
+#include <stdlib.h>
 #include <string.h>
 
 #include "printResult.c"
@@ -111,6 +111,14 @@ void readInstructions(){
     fclose(fp);
 }
 
-void printAnswer(){
-    print(stack[0]);
+void calculateSumPrintAnswer() {
+  stackTop -= 1;
+  calculateSum();
+  print(stack[0]);
+}
+
+
+int main() {
+  readInstructions();
+  calculateSumPrintAnswer();
 }

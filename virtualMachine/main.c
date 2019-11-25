@@ -6,7 +6,6 @@
 
 int main () {
     readInstructions();
-    calculateSum();
-    printAnswer();
+    calculateSumPrintAnswer();
     return 0;
 }

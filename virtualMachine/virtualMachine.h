@@ -8,5 +8,5 @@
     void readInstructions();
     void determineOppOrNumAndCalcIfNecessary(char stringToSplit[]);
     void calculateSum();
-    void printAnswer();
+    void calculateSumPrintAnswer();
 #endif //CS3500_VIRTUALMACHINE_H
