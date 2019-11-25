@@ -91,6 +91,11 @@ void determineOppOrNumAndCalcIfNecessary(char stringToSplit[MAXCHAR]) {
                 prevInstIsOp = 1;
                 operationsLength += 1;
                 }
+            else if (strcmp(split, "EXP\n") == 0) {
+                operations[operationsLength] = 5;
+                prevInstIsOp = 1;
+                operationsLength += 1;
+            }
 
             split = strtok(NULL, " ");
             }

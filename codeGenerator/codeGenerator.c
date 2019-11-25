@@ -7,6 +7,7 @@ void checker(char buffer[100], FILE *writing_file_pointer) {
 	int sub_comparison = strcmp(buffer, "-");
 	int mul_comparison = strcmp(buffer, "*");
 	int div_comparison = strcmp(buffer, "/");
+    int exp_comparison = strcmp(buffer, "^");
 	if (add_comparison == 0) {
 		current_operator = "ADD\n";
 		fputs(current_operator, writing_file_pointer);
@@ -19,7 +20,10 @@ void checker(char buffer[100], FILE *writing_file_pointer) {
 	} else if (div_comparison == 0) {
 		current_operator = "DIV\n";
 		fputs(current_operator, writing_file_pointer);
-	} else {
+	} else if (exp_comparison == 0) {
+        current_operator = "EXP\n";
+        fputs(current_operator, writing_file_pointer);
+    }  else {
 		int float_flag = 0;
 		char *sp;
 		for ( sp=&buffer[0]; *sp != '\0'; sp++ ) {

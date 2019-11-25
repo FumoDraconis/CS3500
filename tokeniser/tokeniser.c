@@ -13,11 +13,11 @@ void remove_spaces(char* s) {
 }
 
 int checkInput(char inputEquation[100]){
-	char opt[] = "/*-+.";
-	char real_opt[] = "/*-+";
+	char opt[] = "/*-+.^";
+	char real_opt[] = "/*-+^";
 	char fail_opt[] = "().";
-	char all_opt[] = "/*-+().";
-	char dot_les[] = "/*-+()";
+	char all_opt[] = "/*-+().^";
+	char dot_les[] = "/*-+()^";
 	int opt_check = 0;
 	int breakes_check=0;
 	int real_check = 0;
