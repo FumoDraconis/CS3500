@@ -11,8 +11,7 @@ int top = -1;
 char stack[500];
 int counter = 0;
 char newLine = ' ';
-
-
+int set = 0;
 
 void push(char item){
 	if(top >= 100 - 1){
@@ -38,7 +37,7 @@ char pop(){
 }
 
 int is_operator(char symbol){
-	if(symbol == '^'|| symbol == '*' || symbol == '/' || symbol == '+' || symbol =='-' ){
+	if(symbol == '^'|| symbol == '*' || symbol == '/' || symbol == '+' || symbol =='-' || symbol =='%'){
 		return 1;
 	} else {
 		return 0;
@@ -47,11 +46,12 @@ int is_operator(char symbol){
 
 int precedence(char symbol)
 {
+
 	if(symbol == '^')/* exponent operator, highest precedence*/
 	{
 		return(3);
 	}
-	else if(symbol == '*' || symbol == '/')
+	else if(symbol == '*' || symbol == '/' || symbol =='%')
 	{
 		return(2);
 	}
@@ -77,31 +77,35 @@ void InfixToPostfix(char infix_exp[], char postfix_exp[])
 	i=0;
 	j=0;
 	item=infix_exp[i];         /* initialize before loop*/
+
 	while(item != '\0')        /* run loop till end of infix expression */
 	{
 		if(item == '(')
 		{
 			push(item);
 		}
-		else if( isdigit(item) || isalpha(item) || item == '.')
+		else if( isdigit(item) || item == '.')
 		{
 			postfix_exp[j] = item;              /* add operand symbol to postfix expr */
 			j++;
-			number = 1;
 		}
 		else if(is_operator(item) == 1)        /* means symbol is operator */
 		{
+			postfix_exp[j] = newLine;
+			j++;
 			x=pop();
+
 			while(is_operator(x) == 1 && precedence(x)>= precedence(item))
 			{
-				postfix_exp[j] = newLine;                  /* so pop all higher precendence operator and */
-				j++;
 				postfix_exp[j] = x;                  /* so pop all higher precendence operator and */
+				j++;
+				postfix_exp[j] = newLine;
 				j++;
 				x = pop();                       /* add them to postfix expresion */
 			}
-			postfix_exp[j] = newLine;
-			j++;
+
+
+
 
 			push(x);
 			/* because just above while loop will terminate we have
@@ -113,16 +117,22 @@ void InfixToPostfix(char infix_exp[], char postfix_exp[])
 		else if(item == ')')         /* if current symbol is ')' then */
 		{
 			x = pop();
-			postfix_exp[j] = newLine;                  /* so pop all higher precendence operator and */
-			j++;                  /* pop and keep popping until */
+			if(set = 0){
+				postfix_exp[j] = newLine;
+				j++;
+			}
+
 			while(x != '(')                /* '(' encounterd */
 			{
+				postfix_exp[j] = newLine;
+				j++;
 				postfix_exp[j] = x;
 				j++;
+
 				x = pop();
+				set = 1;
 			}
-			//postfix_exp[j] = newLine;                  /* so pop all higher precendence operator and */
-			//j++;
+
 		}
 		else
 		{ /* if current symbol is neither operand not '(' nor ')' and nor
@@ -132,12 +142,8 @@ void InfixToPostfix(char infix_exp[], char postfix_exp[])
 			exit(1);
 		}
 		i++;
-
-
 		item = infix_exp[i]; /* go to next symbol of infix expression */
-		//postfix_exp[j] = newLine;
-		//j++;
-		//push(newLine);
+
 	} /* while loop ends here */
 	if(top>0)
 	{
@@ -152,7 +158,6 @@ void InfixToPostfix(char infix_exp[], char postfix_exp[])
 		exit(1);
 	}
 
-
 	postfix_exp[j] = '\0'; /* add sentinel else puts() fucntion */
 	/* will print entire postfix[] array upto SIZE */
 
@@ -166,27 +171,33 @@ int main(){
 	file = fopen("sample","r");
 	while(fgets(var, sizeof(var), file)!=NULL){
 
-		//infix[counter] = var;
 		len = strlen(var);
 		strncat(myString, var, len-1);
 
-		//strncat(myString, space, 1);
 		counter = counter + 1;
 	}
 
 	fclose(file);
 	char infix[counter*2], postfix[counter*2];
-	//strcpy(infix, myString);
+
 	#define SIZE counter
 	strcpy(infix, myString);
-	//puts(infix);
+
 	InfixToPostfix(infix, postfix);
 	printf("%s\n", postfix);
+	myString[0] = '\0';
+	len = strlen(postfix);
+	strncat(myString, postfix, len);
+	FILE *filepointer;
+	filepointer = fopen("./codeGenerator/output.txt", "w");
+	for(int i = 0; i < len; i++){
+		if(myString[i] == ' '){
+			fprintf(filepointer, "\n");
+		} else {
+			fprintf(filepointer,"%c", myString[i]);
+		}
+	}
+	fclose(filepointer);
 
 	return 0;
 }
-
-
-
-
-/*https://www.includehelp.com/c/infix-to-postfix-conversion-using-stack-with-c-program.aspx*/
