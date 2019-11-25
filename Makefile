@@ -11,8 +11,14 @@ run:
 	@./virtualMachine/virtualMachine_output
 
 all:
-	@make compile
-	@make run
+	@gcc -o tokeniser/tokeniser_output tokeniser/tokeniser.c
+	@gcc -o translator/translator_output translator/translator.c
+	@gcc -o codeGenerator/codeGenerator_output codeGenerator/codeGenerator.c
+	@gcc -o virtualMachine/virtualMachine_output virtualMachine/virtualMachine.c
+	@./tokeniser/tokeniser_output
+	@./translator/translator_output
+	@./codeGenerator/codeGenerator_output
+	@./virtualMachine/virtualMachine_output
 
 run_tokeniser:
 
