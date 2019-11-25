@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h> 
 #include <string.h>
+
 #include "printResult.c"
 #include "calculate.c"
+#include "virtualMachine.h"
 
 #define   MAXCHAR 100
 #define   INPUT_FILE "virtualMachine/codeGeneratorOutput.txt"
@@ -101,18 +103,14 @@ void determineOppOrNumAndCalcIfNecessary(char stringToSplit[MAXCHAR]) {
 
 void readInstructions(){
     FILE *fp;
-    char str[MAXCHAR];
+    char fileLine[MAXCHAR];
     char* filename = INPUT_FILE;
     fp = fopen(filename, "r");
-    while (fgets(str, MAXCHAR, fp) != NULL)
-        determineOppOrNumAndCalcIfNecessary(str);
+    while (fgets(fileLine, MAXCHAR, fp) != NULL)
+        determineOppOrNumAndCalcIfNecessary(fileLine);
     fclose(fp);
 }
 
-int main(){
-    readInstructions();
-    stackTop -= 1;
-    calculateSum();
+void printAnswer(){
     print(stack[0]);
-    return 0;
 }
