@@ -2,13 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "printResult.c"
-#include "calculate.c"
+#include "printResult.h
+#include "calculate.h"
 #include "virtualMachine.h"
 
 #define   MAXCHAR 100
-#define   INPUT_FILE "virtualMachine/codeGeneratorOutput.txt"
-
+#define   INPUT_FILE "codeGeneratorOutput.txt"
+// virtualMachine/
 double stack[MAXCHAR];
 int operations[MAXCHAR];
 int prevInstIsOp = 0;
@@ -117,8 +117,8 @@ void calculateSumPrintAnswer() {
   print(stack[0]);
 }
 
-
-int main() {
-  readInstructions();
-  calculateSumPrintAnswer();
-}
+//
+// int main() {
+//   readInstructions();
+//   calculateSumPrintAnswer();
+// }

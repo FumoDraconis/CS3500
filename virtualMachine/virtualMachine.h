@@ -4,7 +4,7 @@
 
 #ifndef CS3500_VIRTUALMACHINE_H
 #define CS3500_VIRTUALMACHINE_H
-
+    
     void readInstructions();
     void determineOppOrNumAndCalcIfNecessary(char stringToSplit[]);
     void calculateSum();
