@@ -1,5 +1,5 @@
 #include <ctap.h>
-#include "translator.c"
+#include "../translator.c"
 
 char three = '3';
 char mul = '*';

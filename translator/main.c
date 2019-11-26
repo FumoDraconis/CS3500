@@ -5,7 +5,7 @@ int main(){
 	char var[100]; //storage for token when iterating through
 	int test; //target for reponce to
 	FILE *file; //target file
-	file = fopen("tokeniserOutput.txt","r");
+	file = fopen("translator/tokeniserOutput.txt","r");
 	/*
 		while the current item in the input file isn't equal to NULL keep iterating
 		over the file. Add the current selected item to myString
@@ -32,7 +32,7 @@ int main(){
 		len = strlen(postfix); //len of output for strncat buffer and iterate over the array
 		strncat(myString, postfix, len); //add postfix answer back to myString
 		FILE *filepointer; //point to file
-		filepointer = fopen("../codeGenerator/translatorOutput.txt", "w");
+		filepointer = fopen("codeGenerator/translatorOutput.txt", "w");
 		//open file to write answers to
 		for(int i = 0; i < len; i++){ //iterate over the sting to output to files
 			if(myString[i] == ' '){ //if the current item is a space

@@ -8,15 +8,15 @@
 /*
 *removes spaces from the inputEquation enter by the user from the file
 *@param: input from file 
-*@returns: input without spaces
+*
 */
 
-char remove_spaces(char* s) {
-    const char* d = s;
+void remove_spaces(char string[]) {
+    const char* d = string;
     do {
         while (*d == ' ') {
             ++d;
         }
-    } while ((*s++ = *d++));
-	return *s;
+    } while (*string++ = *d++);
+    
 }

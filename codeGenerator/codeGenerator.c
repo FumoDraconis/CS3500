@@ -14,7 +14,7 @@ int write_operator ( char *operator ){
 * @return: Returns a 1 on success and a 0 on failure
 */
 	FILE *appending_file_pointer;
-	appending_file_pointer = fopen("../virtualMachine/codeGeneratorOutput.txt", "a");
+	appending_file_pointer = fopen("virtualMachine/codeGeneratorOutput.txt", "a");
 	if (fputs(operator, appending_file_pointer) != EOF) {
 		fclose(appending_file_pointer);
 		return 1;
@@ -31,7 +31,7 @@ int write_float(char buffer[100]) {
 * @returns: Returns a 1 on success and a 0 on failure
 */
 	FILE *appending_file_pointer;
-	appending_file_pointer = fopen("../virtualMachine/codeGeneratorOutput.txt", "a");
+	appending_file_pointer = fopen("virtualMachine/codeGeneratorOutput.txt", "a");
 	if (fputs("LOADFLOAT ", appending_file_pointer) != EOF) {
 		fputs(buffer, appending_file_pointer);
 		fputs("\n", appending_file_pointer);
@@ -50,7 +50,7 @@ int write_int( char buffer[100]) {
 * returns: Returns a 1 on success and a 0 on failure
 */
 	FILE *appending_file_pointer;
-	appending_file_pointer = fopen("../virtualMachine/codeGeneratorOutput.txt", "a");
+	appending_file_pointer = fopen("virtualMachine/codeGeneratorOutput.txt", "a");
 	if (fputs("LOADINT ", appending_file_pointer) != EOF) {
 		fputs(buffer, appending_file_pointer);
 		fputs("\n", appending_file_pointer);
@@ -151,7 +151,7 @@ int read_file(char *filename) {
 */
 	FILE *reading_file_pointer;
 	FILE *writing_file_pointer;
-	writing_file_pointer = fopen("../virtualMachine/codeGeneratorOutput.txt", "w");
+	writing_file_pointer = fopen("virtualMachine/codeGeneratorOutput.txt", "w");
 	fclose(writing_file_pointer);
 	char buffer[100];
 	if (fopen(filename, "r")){

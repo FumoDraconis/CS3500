@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+
 /*
 *writes out to the file separating the input
 *@param: input from file 
