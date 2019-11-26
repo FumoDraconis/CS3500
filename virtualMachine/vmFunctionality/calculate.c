@@ -2,6 +2,7 @@
 * Created by Thomas Cronin
 */
 #include <stdio.h>
+#include <math.h>
 #include "calculate.h"
 
 /*
@@ -11,9 +12,6 @@
  * it returns the result of the calculations as a double
  * */
 double doCalculation(int operation, double number_1, double number_2) {
-   // printf("\nnumber: %f\n", number_1);
-   // printf("\noperator: %i\n", operation);
-   // printf("\nnumber: %f\n", number_2);
     double result;
     switch (operation) {
         case 1: // Add
@@ -40,7 +38,12 @@ double doCalculation(int operation, double number_1, double number_2) {
                 number_2 -= 1;
             }
             break;
+        case 6: // div;
+            result = (number_1 / number_2);
+            int tempResult = (int) result;
+            result = (number_1 - (tempResult * number_2));
+            break;
     }
-    // printf("\n result: %f\n", result);
+
     return result;
 }
