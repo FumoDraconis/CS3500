@@ -11,12 +11,13 @@
 *@returns: input without spaces
 */
 
-char remove_spaces(char* s) {
+void remove_spaces(char* s) {
+    //printf("%s",s);
     const char* d = s;
     do {
         while (*d == ' ') {
             ++d;
         }
     } while ((*s++ = *d++));
-	return *s;
+	
 }
