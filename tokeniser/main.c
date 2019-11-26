@@ -1,6 +1,6 @@
-
 #include "tokeniser.c"
-
+#include "checkInput.c"
+#include "remove_spaces.c"
 //
 // runs all the methods in tokerniser 
 //
@@ -10,9 +10,12 @@ int main(int argc, char **argv ) {
 	tokeniserInputPointer= fopen("tokeniser/tokeniserInput.txt", "r" );
 	fscanf(tokeniserInputPointer, "%s",inputEquation);
 	int checked = checkInput(inputEquation);
-	if (checked == 0){
+	if (checked == 1){
+		printf("hi\n");		
 		return 1;	
+		
 	}
+	
 	remove_spaces(inputEquation);
 	printf("%s\n",inputEquation);
 	separator(inputEquation);
