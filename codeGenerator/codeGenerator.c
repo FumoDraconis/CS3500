@@ -74,7 +74,12 @@ int checker(char buffer[100]) {
 		if (write_operator(current_operator) == 1) {
 			return 1;
 		}
-	}else {
+	}else if (exp_comparison == 0) {
+        	current_operator = "EXP\n";
+        	if (write_operator(current_operator) == 1) {
+			return 1;
+		}
+	} else {
 		int float_flag = 0;
 		char *sp;
 		for ( sp=&buffer[0]; *sp != '\0'; sp++ ) {
@@ -91,8 +96,7 @@ int checker(char buffer[100]) {
 				return 1;
 			}
 		}
-	}
-	return 0;
+	}return 0;
 }
 
 
