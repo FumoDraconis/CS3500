@@ -18,11 +18,6 @@ TESTS {
 
 	ok(separator("12+23")==1,"working input");
 	ok(separator("")==0,"not wrting input");
-
-	is("1+12",remove_spaces("1 + 12"), "correct");
-
-
-	
 }
 
 
