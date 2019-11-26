@@ -168,7 +168,7 @@ int main(){
 	char var[100];
 	int test = 0;
 	FILE *file;
-	file = fopen("sample","r");
+	file = fopen("./tokeniser/out.txt","r");
 	while(fgets(var, sizeof(var), file)!=NULL){
 
 		len = strlen(var);
