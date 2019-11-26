@@ -16,6 +16,19 @@ clean:
 	@rm codeGenerator/codeGenerator_output
 	@rm virtualMachine/codeGeneratorOutput.txt
 	@rm virtualMachine/virtualMachine_output
+	@rm tokeniser/tokeniser_test
+	@rm translator/translator_test
+	@rm codeGenerator/codeGenerator_test
+	@rm virtualMachine/tests/*.t
 
 test:
 	@gcc -o tokeniser/tokeniser_test tokeniser/tests/*.c
+	@./tokeniser/tokeniser_test
+	@gcc -o translator/translator_test translator/tests/*.c
+	@./translator/translator_test
+	@gcc -o codeGenerator/codeGenerator_test codeGenerator/tests/*.c
+	@./codeGenerator/codeGenerator_test
+	@gcc -o virtualMachine/tests/vmTest.t virtualMachine/tests/virtualMachineTest.c virtualMachine/vmFunctionality/*.c
+	@gcc -o virtualMachine/tests/cTest.t virtualMachine/tests/calculateTest.c virtualMachine/vmFunctionality/*.c
+	@gcc -o virtualMachine/tests/prTest.t virtualMachine/tests/printResultTest.c virtualMachine/vmFunctionality/*.c
+	@./virtualMachine/tests/*.t

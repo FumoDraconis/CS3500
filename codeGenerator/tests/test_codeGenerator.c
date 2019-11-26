@@ -4,7 +4,7 @@
 #include <ctap.h>
 #include "../codeGenerator.c"
 
-char *workingFilename = "translatorOutput.txt";
+char *workingFilename = "codeGenerator/translatorOutput.txt";
 char *wrongFilename = "Random.txt";
 
 TESTS {
