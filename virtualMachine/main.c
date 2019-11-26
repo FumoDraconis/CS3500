@@ -2,7 +2,7 @@
 * Created by Thomas Cronin
 */
 #include "vmFunctionality/virtualMachine.h"
-#define INPUT_FILE "codeGeneratorOutput.txt"
+#define INPUT_FILE "virtualMachine/codeGeneratorOutput.txt"
 
 
 
