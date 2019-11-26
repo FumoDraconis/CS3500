@@ -1,3 +1,6 @@
+/*
+* Adam Cashman
+*/
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -5,8 +8,10 @@
 #include "codeGenerator.h"
 int write_operator ( char *operator ){
 /*
+* @parameters: Takes the current operator from the buffer
 * opens the file that was created earlier again in order to append
-* Tries to put the operator into the file and returns a 1 on success and a 0 on failure
+* Tries to put the operator into the file
+* @return: Returns a 1 on success and a 0 on failure
 */
 	FILE *appending_file_pointer;
 	appending_file_pointer = fopen("../virtualMachine/codeGeneratorOutput.txt", "a");
@@ -18,11 +23,12 @@ int write_operator ( char *operator ){
 		return 0;
 	}
 }
-
 int write_float(char buffer[100]) {
 /*
+* @parameters: Takes the current operator from the buffer
 * opens the file that was created earlier again in order to append
-* Tries to put the float into the file and returns a 1 on success and a 0 on failure
+* Tries to put the float into the file 
+* @returns: Returns a 1 on success and a 0 on failure
 */
 	FILE *appending_file_pointer;
 	appending_file_pointer = fopen("../virtualMachine/codeGeneratorOutput.txt", "a");
@@ -36,11 +42,12 @@ int write_float(char buffer[100]) {
 		return 0;
 	}
 }
-
 int write_int( char buffer[100]) {
 /*
+* @parameters: Takes the buffer which is the current character
 * opens the file that was created earlier again in order to append
-* Tries to put the integer into the file and returns a 1 on success and a 0 on failure
+* Tries to put the integer into the file 
+* returns: Returns a 1 on success and a 0 on failure
 */
 	FILE *appending_file_pointer;
 	appending_file_pointer = fopen("../virtualMachine/codeGeneratorOutput.txt", "a");
@@ -55,6 +62,10 @@ int write_int( char buffer[100]) {
 	}
 }
 int checker(char buffer[100]) {
+/*
+* @parameters: Takes in the buffer i.e. the current line that was read in from the file
+* @Returns: Returns 1 if the correct opeator has been written to the output file
+*/
 	char *current_operator;
 //	checks if the current character is +
 	int add_comparison = strcmp(buffer, "+");
@@ -120,10 +131,10 @@ int checker(char buffer[100]) {
 		}
 	}return 0;
 }
-
-
 int read_file(char *filename) {
 /*
+* @parameters: Takes in the infix-to-postfix filename
+* @Returns: returns 1 if the correct file is read and 0 if the wrong file is read
 * reads the infix-to-postix output file
 * creates a new file for the output of the code generator
 * iterates through the input file
@@ -147,5 +158,4 @@ int read_file(char *filename) {
 	}
 	fclose(reading_file_pointer);
 	return 1;
-
 }
