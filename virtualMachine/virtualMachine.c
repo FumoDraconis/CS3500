@@ -2,9 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "printResult.h
+
 #include "calculate.h"
 #include "virtualMachine.h"
+#include "printResult.h"
 
 #define   MAXCHAR 100
 #define   INPUT_FILE "codeGeneratorOutput.txt"
@@ -114,7 +115,7 @@ void readInstructions(){
 void calculateSumPrintAnswer() {
   stackTop -= 1;
   calculateSum();
-  print(stack[0]);
+  printFormattedAnswer(stack[0]);
 }
 
 //
