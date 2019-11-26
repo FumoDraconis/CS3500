@@ -3,21 +3,14 @@
 */
 #include "tokeniser.c"
 #include "checkInput.c"
+#include "remove_spaces.c"
 
 /*
 * call was the functions create to form the tokerniser
 *@param: no param
 *@returns: 0 if completed without error 1 if errors occur
 */
-void remove_spaces(char string[]) {
 
-    const char* d = string;
-    do {
-        while (*d == ' ') {
-            ++d;
-        }
-    } while (*string++ = *d++);
-}
 
 int main() {
 	FILE *tokeniserInputPointer;
@@ -30,10 +23,7 @@ int main() {
 	if (checked == 1){	
 		return 1;	
 	}
-	
-	
-
-	
+	printf("%s\n",inputEquation);
 	separator(inputEquation);
 	return 0;
 }
