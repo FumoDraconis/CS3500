@@ -1,12 +1,15 @@
+/*
+* Created by Thomas Cronin
+*/
 #include <stdio.h>
+#include "calculate.h"
+
 /*
  * doCalculation takes an operator as an int and to floats of numbers
  * it uses a switch to determine what the operator to use
  * it calculates and stores the result as a double
- * it returns the double
+ * it returns the result of the calculations as a double
  * */
-#include "calculate.h"
-
 double doCalculation(int operation, double number_1, double number_2) {
    // printf("\nnumber: %f\n", number_1);
    // printf("\noperator: %i\n", operation);

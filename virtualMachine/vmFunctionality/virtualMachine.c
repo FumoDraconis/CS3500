@@ -1,12 +1,12 @@
+/*
+* Created by Thomas Cronin
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-
 #include "calculate.h"
 #include "virtualMachine.h"
 #include "printResult.h"
-
 #define   MAXCHAR 100
 
 // virtualMachine
@@ -22,8 +22,13 @@ int stackTop = 0;
 int operationsLength = 0;
 
 
+
+// prepCalculation takes no parameters
+// it uses the global stack, operations, prevInstIsOp, stackTop operationsLength
+// to prepare each calculation
+// returns an int of 0 if no error occured
+// else it returns an int error code
 int prepCalculation() {
-  //(double stack[],int operations[],int stackTop,int operationsLength)
     /*
      * prepCalculation
      * while there are operations to do
@@ -51,9 +56,10 @@ int prepCalculation() {
     return 0;
 }
 
-/*
-*
-**/
+// determineOppOrNumAndCalcIfNecessary takes a parameter of an aray of
+// characters
+// its splits the array on spaces and returns the executes each instruction
+// returns an error code if an error occured
 int determineOppOrNumAndCalcIfNecessary(char stringToSplit[MAXCHAR]) {
     char * split;
     // seperates line on spaces
@@ -117,6 +123,11 @@ int determineOppOrNumAndCalcIfNecessary(char stringToSplit[MAXCHAR]) {
     }
 }
 
+// readInstructions takes in an char array of a file path
+// it then opens the file and reads it line by line calling
+// determineOppOrNumAndCalcIfNecessary
+// returns 0 if executed with no errors
+// returns error code otherwise
 int readInstructions(char * file){
   // opens the file to be read
     FILE *fp;
@@ -143,6 +154,8 @@ int readInstructions(char * file){
     return 0;
 }
 
+// calculateSumPrintAnswer takes no parameter it uses the global variables
+// it returns 0 or else the divison of 0 error code
 int calculateSumPrintAnswer() {
   stackTop -= 1;
   int div0 = prepCalculation();
