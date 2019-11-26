@@ -1,3 +1,4 @@
+//Author: Patrick O'Donoghue
 #ifndef CS3500_TRANSLATOR_H
 #define CS3500_TRANSLATOR_H
     int push(char);
