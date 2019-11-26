@@ -31,6 +31,10 @@ void calculateSum(){
         stack[stackTop] = 0.0;
         stackTop -=1;
         double number_1 = stack[stackTop];
+        if (operator == 4 && number_2 == 0) {
+            printf("Error: Cannot divide by 0\n");
+            exit(0);
+        }
         stack[stackTop] = doCalculation(operator,number_1,number_2);
         operationsIter += 1;
     }
