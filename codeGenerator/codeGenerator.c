@@ -2,9 +2,10 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
+
 int write_operator ( char *operator ){
 	FILE *appending_file_pointer;
-	appending_file_pointer = fopen("codeGeneratorOutput.txt", "a");
+	appending_file_pointer = fopen("../virtualMachine/codeGeneratorOutput.txt", "a");
 	if (fputs(operator, appending_file_pointer) != EOF) {
 		fclose(appending_file_pointer);
 		return 1;
@@ -16,7 +17,7 @@ int write_operator ( char *operator ){
 
 int write_float(char buffer[100]) {
 	FILE *appending_file_pointer;
-	appending_file_pointer = fopen("codeGeneratorOutput.txt", "a");
+	appending_file_pointer = fopen("../virtualMachine/codeGeneratorOutput.txt", "a");
 	if (fputs("LOADFLOAT ", appending_file_pointer) != EOF) {
 		fputs(buffer, appending_file_pointer);
 		fputs("\n", appending_file_pointer);
@@ -30,7 +31,7 @@ int write_float(char buffer[100]) {
 
 int write_int( char buffer[100]) {
 	FILE *appending_file_pointer;
-	appending_file_pointer = fopen("codeGeneratorOutput.txt", "a");
+	appending_file_pointer = fopen("../virtualMachine/codeGeneratorOutput.txt", "a");
 	if (fputs("LOADINT ", appending_file_pointer) != EOF) {
 		fputs(buffer, appending_file_pointer);
 		fputs("\n", appending_file_pointer);
@@ -48,7 +49,6 @@ int checker(char buffer[100]) {
 	int mul_comparison = strcmp(buffer, "*");
 	int div_comparison = strcmp(buffer, "/");
 	int exp_comparison = strcmp(buffer, "^");
-	int mod_comparison = strcmp(buffer, "%");
 	if (add_comparison == 0) {
 		current_operator = "ADD\n";
 		if (write_operator(current_operator) == 1) {
@@ -71,11 +71,6 @@ int checker(char buffer[100]) {
 		}
 	} else if (exp_comparison == 0) {
 		current_operator = "EXP\n";
-		if (write_operator(current_operator) == 1) {
-			return 1;
-		}
-	} else if (mod_comparison == 0) {
-		current_operator = "MOD\n";
 		if (write_operator(current_operator) == 1) {
 			return 1;
 		}
@@ -104,10 +99,14 @@ int checker(char buffer[100]) {
 int read_file(char *filename) {
 	FILE *reading_file_pointer;
 	FILE *writing_file_pointer;
-	writing_file_pointer = fopen("codeGeneratorOutput.txt", "w");
+	writing_file_pointer = fopen("../virtualMachine/codeGeneratorOutput.txt", "w");
 	fclose(writing_file_pointer);
 	char buffer[100];
-	reading_file_pointer = fopen(filename, "r");
+	if (fopen(filename, "r")){
+		reading_file_pointer = fopen(filename, "r");
+	} else {
+		return 0;
+	}
 	while (fscanf(reading_file_pointer, "%s", buffer) != EOF) {
 		if (checker(buffer) == 0) {
 			return 0;
