@@ -1,4 +1,4 @@
-
+//Author: Patrick O'Donoghue
 #ifndef CS3500_CALCULATE_H
 #define CS3500_CALCULATE_H
     double doCalculation(int, double, double);
