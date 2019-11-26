@@ -77,6 +77,8 @@ int checker(char buffer[100]) {
 	int div_comparison = strcmp(buffer, "/");
 //	checks if the current character is ^
 	int exp_comparison = strcmp(buffer, "^");
+//	checks if the current character is %
+	int mod_comparison = strcmp(buffer, "%");	
 	if (add_comparison == 0) {
 //	calls the write_operator function with ADD\n as the parameters
 		current_operator = "ADD\n";
@@ -104,6 +106,12 @@ int checker(char buffer[100]) {
 	} else if (exp_comparison == 0) {
 //	calls the write_operator function with EXP\n as the parameters
 		current_operator = "EXP\n";
+		if (write_operator(current_operator) == 1) {
+			return 1;
+		}
+	} else if (mod_comparison == 0) {
+//	calls the write_operator function with MOD\n as the parameters
+		current_operator = "MOD\n";
 		if (write_operator(current_operator) == 1) {
 			return 1;
 		}
