@@ -5,6 +5,8 @@
  * it calculates and stores the result as a double
  * it returns the double
  * */
+#include "calculate.h"
+
 double doCalculation(int operation, double number_1, double number_2) {
     double result;
     switch (operation) {
@@ -19,6 +21,18 @@ double doCalculation(int operation, double number_1, double number_2) {
             break;
         case 4: // div;
             result = number_1 / number_2;
+            break;
+        case 5: // EXP;
+            result = number_1;
+            double base = number_1;
+            double exponent = number_2;
+            if (number_2 == 0) {
+                result = 1;
+            }
+            while (number_2 > 1) {
+                result *= base;
+                number_2 -= 1;
+            }
             break;
     }
     return result;

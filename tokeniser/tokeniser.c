@@ -11,7 +11,7 @@ void remove_spaces(char* s) {
         while (*d == ' ') {
             ++d;
         }
-    } while (*s++ = *d++);
+    } while ((*s++ = *d++));
 }
 //
 // checkes the input equation to make sure it a valid equation 
@@ -32,11 +32,13 @@ int checkInput(char inputEquation[100]){
 	// intertgrates over the whole equation one character at a time 
 	//
 	for (int counter = 0; counter < strlen(inputEquation); counter += 1 ){
+
 		//
 		// check if the character is a number from 0 to 9 or if that character is equal to a (/,*,-,+,.,%,^) otherwise ch = 1 used later 
 		//
 		if (inputEquation[counter-1]>='0' && inputEquation[counter-1]<='9' || strchr(all_opt,inputEquation[counter-1])!= NULL ){
 			ch = 0;	
+
 		}else{
 			ch =1;		
 		}
@@ -62,6 +64,7 @@ int checkInput(char inputEquation[100]){
 		// checks if the inputEquation is less then a single characters
 		//
 		if ( strlen(inputEquation) <=1) {
+
 			printf("invalid input:\n");	
 			return -1;
 		//
@@ -123,6 +126,7 @@ int separator(char input[100]){
 	//
 	for (int counter = 0; counter < strlen(input); counter += 1 ){
 		char *namePtr = input;
+
 		char data;
 		//
 		// if the current char is a digit or a . write it to the file
@@ -148,10 +152,12 @@ int separator(char input[100]){
 		// if the current char = ( and the is not a digit write it to the file on separated lines	
 		//
                 }else if(input[counter] =='(' && isdigit(input[counter-1])==0){
+
 			fprintf(outputFile,"%c\n",*(namePtr +counter));
 		//
 		// else just write it to the file with on separated lines	
 		//
+
 		}else { 
 			fprintf(outputFile,"\n%c\n",*(namePtr +counter));
 		}	
@@ -160,6 +166,7 @@ int separator(char input[100]){
 	//close the file
 	//		
 	fclose(outputFile);
+
 	return 0;
 }
 
