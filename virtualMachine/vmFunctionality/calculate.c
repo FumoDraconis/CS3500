@@ -5,6 +5,8 @@
  * it calculates and stores the result as a double
  * it returns the double
  * */
+#include "calculate.h"
+
 double doCalculation(int operation, double number_1, double number_2) {
     double result;
     switch (operation) {
