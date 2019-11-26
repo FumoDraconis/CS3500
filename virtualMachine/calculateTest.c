@@ -5,6 +5,7 @@
 #define mul 2
 #define sub 3
 #define div 4
+#define exponent 5
 
 TESTS {
   //tests the addition case
@@ -18,4 +19,8 @@ TESTS {
 
   //tests the division case
   ok (32 == doCalculation(div, 128, 4), "128 / 4 does equal 32");
+
+  TODO("add the exponent test") {
+    ok (729 == doCalculation(5, 9, 3), "9 ^ 3 does equal 729");
+  }
 }

@@ -17,7 +17,10 @@ int stackTop = 0;
 int operationsLength = 0;
 
 
-void calculateSum(){
+int calculateSum(double stack[],
+                int operations[],
+                int stackTop,
+                int operationsLength) {
     /*
      * calculateSum
      * while there are operations to do
@@ -36,11 +39,12 @@ void calculateSum(){
         double number_1 = stack[stackTop];
         if (operator == 4 && number_2 == 0) {
             printf("Error: Cannot divide by 0\n");
-            exit(0);
+            exit(EXIT_FAILURE);
         }
         stack[stackTop] = doCalculation(operator,number_1,number_2);
         operationsIter += 1;
     }
+    return 0;
 }
 
 void determineOppOrNumAndCalcIfNecessary(char stringToSplit[MAXCHAR]) {
@@ -52,7 +56,7 @@ void determineOppOrNumAndCalcIfNecessary(char stringToSplit[MAXCHAR]) {
          * */
         if ((strcmp(split, "LOADINT") == 0 || strcmp(split, "LOADFLOAT") == 0) && prevInstIsOp == 1 ) {
             stackTop -= 1;
-            calculateSum();
+            calculateSum(stack, operations, stackTop, operationsLength);
             stackTop += 1;
             operationsLength = 0;
         }
@@ -114,7 +118,7 @@ void readInstructions(){
 
 void calculateSumPrintAnswer() {
   stackTop -= 1;
-  calculateSum();
+  calculateSum(stack, operations, stackTop, operationsLength);
   printFormattedAnswer(stack[0]);
 }
 
