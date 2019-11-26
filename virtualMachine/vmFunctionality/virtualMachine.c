@@ -8,7 +8,7 @@
 #include "printResult.h"
 
 #define   MAXCHAR 100
-#define   INPUT_FILE "codeGeneratorOutput.txt"
+
 // virtualMachine/
 double stack[MAXCHAR];
 int operations[MAXCHAR];
@@ -17,10 +17,7 @@ int stackTop = 0;
 int operationsLength = 0;
 
 
-int calculateSum(double stack[],
-                int operations[],
-                int stackTop,
-                int operationsLength) {
+int prepCalculation(double stack[],int operations[],int stackTop,int operationsLength) {
     /*
      * calculateSum
      * while there are operations to do
@@ -39,7 +36,7 @@ int calculateSum(double stack[],
         double number_1 = stack[stackTop];
         if (operator == 4 && number_2 == 0) {
             printf("Error: Cannot divide by 0\n");
-            exit(EXIT_FAILURE);
+            return -1;
         }
         stack[stackTop] = doCalculation(operator,number_1,number_2);
         operationsIter += 1;
@@ -47,7 +44,7 @@ int calculateSum(double stack[],
     return 0;
 }
 
-void determineOppOrNumAndCalcIfNecessary(char stringToSplit[MAXCHAR]) {
+int determineOppOrNumAndCalcIfNecessary(char stringToSplit[MAXCHAR]) {
     char * split;
     split = strtok(stringToSplit," ");
     while (split != NULL) {
@@ -56,7 +53,8 @@ void determineOppOrNumAndCalcIfNecessary(char stringToSplit[MAXCHAR]) {
          * */
         if ((strcmp(split, "LOADINT") == 0 || strcmp(split, "LOADFLOAT") == 0) && prevInstIsOp == 1 ) {
             stackTop -= 1;
-            calculateSum(stack, operations, stackTop, operationsLength);
+            int div0 = prepCalculation(stack, operations, stackTop, operationsLength);
+            if (div0 == -1){return div0;};
             stackTop += 1;
             operationsLength = 0;
         }
@@ -101,29 +99,36 @@ void determineOppOrNumAndCalcIfNecessary(char stringToSplit[MAXCHAR]) {
 
             split = strtok(NULL, " ");
             }
-
-
     }
 }
 
-void readInstructions(){
+int readInstructions(char * file){
     FILE *fp;
     char fileLine[MAXCHAR];
-    char* filename = INPUT_FILE;
+    char* filename = file;
     fp = fopen(filename, "r");
-    while (fgets(fileLine, MAXCHAR, fp) != NULL)
-        determineOppOrNumAndCalcIfNecessary(fileLine);
-    fclose(fp);
+    if (fp != NULL){
+      while (fgets(fileLine, MAXCHAR, fp) != NULL){
+          int div0 = determineOppOrNumAndCalcIfNecessary(fileLine);
+          if (div0 == -1){
+            return div0;
+          }
+        }
+      fclose(fp);
+    }
+    else {
+      printf("\nError codeGeneratorOutput file was not found\n");
+      return -2;
+    }
+    return 0;
 }
 
-void calculateSumPrintAnswer() {
+int calculateSumPrintAnswer() {
   stackTop -= 1;
-  calculateSum(stack, operations, stackTop, operationsLength);
-  printFormattedAnswer(stack[0]);
+  int div0 = prepCalculation(stack, operations, stackTop, operationsLength);
+  if (div0 == 0){
+    printFormattedAnswer(stack[0]);
+    return 0;
+    }
+  return div0;
 }
-
-//
-// int main() {
-//   readInstructions();
-//   calculateSumPrintAnswer();
-// }

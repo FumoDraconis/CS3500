@@ -1,5 +1,5 @@
 #include <ctap.h>
-#include "printResult.h"
+#include "../vmFunctionality/printResult.h"
 
 
 TESTS {

@@ -1,5 +1,5 @@
 #include <ctap.h>
-#include "calculate.h"
+#include "../vmFunctionality/calculate.h"
 
 #define add 1
 #define mul 2

@@ -1,11 +1,13 @@
 //
 // Created by Tom Cronin on 25/11/2019.
 //
-#include "virtualMachine.h"
-
+#include "vmFunctionality/virtualMachine.h"
+#define INPUT_FILE "virtualMachine/codeGeneratorOutput.txt"
 
 int main () {
-    readInstructions();
-    calculateSumPrintAnswer();
+    int errorCheck = readInstructions(INPUT_FILE);
+    if (errorCheck == 0) {
+        calculateSumPrintAnswer();
+    }
     return 0;
 }
