@@ -1,4 +1,4 @@
-
+#include <stdio.h>
 /*
  * doCalculation takes an operator as an int and to floats of numbers
  * it uses a switch to determine what the operator to use
@@ -8,6 +8,9 @@
 #include "calculate.h"
 
 double doCalculation(int operation, double number_1, double number_2) {
+   // printf("\nnumber: %f\n", number_1);
+   // printf("\noperator: %i\n", operation);
+   // printf("\nnumber: %f\n", number_2);
     double result;
     switch (operation) {
         case 1: // Add
@@ -35,5 +38,6 @@ double doCalculation(int operation, double number_1, double number_2) {
             }
             break;
     }
+    // printf("\n result: %f\n", result);
     return result;
 }

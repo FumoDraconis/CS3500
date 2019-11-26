@@ -9,17 +9,23 @@
 
 #define   MAXCHAR 100
 
-// virtualMachine/
+// virtualMachine
+// creates the stack for the ints and floats
 double stack[MAXCHAR];
+//creates the list of opperations being used
 int operations[MAXCHAR];
+// creates variable to check if previous instruction was an operand
 int prevInstIsOp = 0;
+// creates the stack pointer stackTop
 int stackTop = 0;
+// creates the operationslength variable
 int operationsLength = 0;
 
 
-int prepCalculation(double stack[],int operations[],int stackTop,int operationsLength) {
+int prepCalculation() {
+  //(double stack[],int operations[],int stackTop,int operationsLength)
     /*
-     * calculateSum
+     * prepCalculation
      * while there are operations to do
      * it takes two numbers of the stack
      * takes the first or next operation to do
@@ -38,27 +44,30 @@ int prepCalculation(double stack[],int operations[],int stackTop,int operationsL
             printf("Error: Cannot divide by 0\n");
             return -1;
         }
+
         stack[stackTop] = doCalculation(operator,number_1,number_2);
         operationsIter += 1;
     }
     return 0;
 }
 
+/*
+*
+**/
 int determineOppOrNumAndCalcIfNecessary(char stringToSplit[MAXCHAR]) {
     char * split;
+    // seperates line on spaces
     split = strtok(stringToSplit," ");
     while (split != NULL) {
-        /*
-         * checks if there are calculations to be made before loading the next number
-         * */
+         //checks if there are calculations to be made before loading the next number
         if ((strcmp(split, "LOADINT") == 0 || strcmp(split, "LOADFLOAT") == 0) && prevInstIsOp == 1 ) {
             stackTop -= 1;
-            int div0 = prepCalculation(stack, operations, stackTop, operationsLength);
+            int div0 = prepCalculation();
             if (div0 == -1){return div0;};
             stackTop += 1;
             operationsLength = 0;
         }
-
+        // checks if it will be loading and int or float
         if (strcmp(split, "LOADINT") == 0) {
             split = strtok(NULL, " ");
             int LOADINT = atoi(split);
@@ -75,6 +84,7 @@ int determineOppOrNumAndCalcIfNecessary(char stringToSplit[MAXCHAR]) {
             split = strtok(NULL, " ");
             prevInstIsOp = 0;
         }
+        // determines the correct operand number
         else {
             if (strcmp(split, "ADD\n") == 0) {
                 operations[operationsLength] = 1;
@@ -108,17 +118,22 @@ int determineOppOrNumAndCalcIfNecessary(char stringToSplit[MAXCHAR]) {
 }
 
 int readInstructions(char * file){
+  // opens the file to be read
     FILE *fp;
     char fileLine[MAXCHAR];
     char* filename = file;
     fp = fopen(filename, "r");
+    // if file exists
     if (fp != NULL){
+      // reads file line by line
       while (fgets(fileLine, MAXCHAR, fp) != NULL){
           int div0 = determineOppOrNumAndCalcIfNecessary(fileLine);
+          //if division of 0 occured
           if (div0 == -1){
             return div0;
           }
         }
+        // closes the file
       fclose(fp);
     }
     else {
@@ -130,7 +145,7 @@ int readInstructions(char * file){
 
 int calculateSumPrintAnswer() {
   stackTop -= 1;
-  int div0 = prepCalculation(stack, operations, stackTop, operationsLength);
+  int div0 = prepCalculation();
   if (div0 == 0){
     printFormattedAnswer(stack[0]);
     return 0;

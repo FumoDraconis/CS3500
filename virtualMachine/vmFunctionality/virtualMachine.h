@@ -4,6 +4,6 @@
 
     int readInstructions(char *);
     int determineOppOrNumAndCalcIfNecessary(char stringToSplit[]);
-    int prepCalculation(double *, int *, int, int);
+    int prepCalculation();
     int calculateSumPrintAnswer();
 #endif //CS3500_VIRTUALMACHINE_H
