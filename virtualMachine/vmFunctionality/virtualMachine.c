@@ -117,6 +117,11 @@ int determineOppOrNumAndCalcIfNecessary(char stringToSplit[MAXCHAR]) {
                 prevInstIsOp = 1;
                 operationsLength += 1;
             }
+            else if (strcmp(split, "MOD\n") == 0) {
+                operations[operationsLength] = 6;
+                prevInstIsOp = 1;
+                operationsLength += 1;
+            }
 
             split = strtok(NULL, " ");
             }

@@ -6,6 +6,7 @@
 #define sub 3
 #define div 4
 #define exponent 5
+#define mod 6
 
 TESTS {
   //tests the addition case
@@ -26,4 +27,7 @@ TESTS {
 
   //tests the exponent case
   ok (729 == doCalculation(exponent, 9, 3), "9 ^ 3 does equal 729");
+  //tests the mod case
+  ok (4 == doCalculation(mod, 4, 5), "4 % 5 does equal 4");
+  ok (1 == doCalculation(mod, 5, 4), "4 % 5 does equal 4");
 }
