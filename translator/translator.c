@@ -11,7 +11,10 @@ int top = -1;
 char stack[500];
 int counter = 0;
 char newLine = ' ';
+<<<<<<< HEAD
 int set = 0;
+=======
+>>>>>>> a53208504f9c779992ac22a6a9a6b66cea8583fb
 
 void push(char item){
 	if(top >= 100 - 1){
@@ -142,6 +145,10 @@ void InfixToPostfix(char infix_exp[], char postfix_exp[])
 			exit(1);
 		}
 		i++;
+<<<<<<< HEAD
+=======
+
+>>>>>>> a53208504f9c779992ac22a6a9a6b66cea8583fb
 		item = infix_exp[i]; /* go to next symbol of infix expression */
 
 	} /* while loop ends here */
@@ -168,7 +175,11 @@ int main(){
 	char var[100];
 	int test = 0;
 	FILE *file;
+<<<<<<< HEAD
 	file = fopen("./tokeniser/out.txt","r");
+=======
+	file = fopen("translator/tokeniserOutput.txt","r");
+>>>>>>> a53208504f9c779992ac22a6a9a6b66cea8583fb
 	while(fgets(var, sizeof(var), file)!=NULL){
 
 		len = strlen(var);
@@ -184,12 +195,19 @@ int main(){
 	strcpy(infix, myString);
 
 	InfixToPostfix(infix, postfix);
+<<<<<<< HEAD
 	printf("%s\n", postfix);
+=======
+>>>>>>> a53208504f9c779992ac22a6a9a6b66cea8583fb
 	myString[0] = '\0';
 	len = strlen(postfix);
 	strncat(myString, postfix, len);
 	FILE *filepointer;
+<<<<<<< HEAD
 	filepointer = fopen("./codeGenerator/output.txt", "w");
+=======
+	filepointer = fopen("codeGenerator/translatorOutput.txt", "w");
+>>>>>>> a53208504f9c779992ac22a6a9a6b66cea8583fb
 	for(int i = 0; i < len; i++){
 		if(myString[i] == ' '){
 			fprintf(filepointer, "\n");
